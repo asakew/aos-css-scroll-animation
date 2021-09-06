@@ -8,6 +8,300 @@
 <p>blog docs: <a href="https://css-tricks.com/aos-css-driven-scroll-animation-library/">https://css-tricks.com/aos-css-driven-scroll-animation-library/</a></p>
 <p>github repo: <a href="https://github.com/michalsnik/aos">https://github.com/michalsnik/aos</a></p>
 <p>demo: <a href="https://github.com/asakew/aos-css-scroll-animation">https://github.com/asakew/aos-css-scroll-animation</a></p>
+<hr>
+<p><a href="http://michalsnik.github.io/aos/"><img src="https://s32.postimg.org/ktvt59hol/aos_header.png" alt="AOS - Animate on scroll library"></a></p>
+<p><a href="https://npmjs.org/package/aos"><img src="https://img.shields.io/npm/v/aos/next.svg?style=flat" alt="NPM version"></a>
+<a href="https://npmjs.org/package/aos"><img src="https://img.shields.io/npm/dm/aos.svg?style=flat" alt="NPM downloads"></a>
+<a href="https://travis-ci.org/michalsnik/aos"><img src="https://travis-ci.org/michalsnik/aos.svg?branch=master" alt="Build Status"></a>
+<a href="https://gitter.im/michalsnik/aos?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/michalsnik/aos.svg" alt="Gitter"></a></p>
+<p><a href="https://twitter.com/michalsnik"><img src="https://img.shields.io/twitter/follow/michalsnik.svg?style=social" alt="Twitter Follow"></a> <a href="https://twitter.com/home?status=AOS%20-%20Animate%20on%20Scroll%20library%0Ahttps%3A//github.com/michalsnik/aos"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Twitter URL"></a></p>
+<h2 id="-exclamation-exclamation-exclamation-this-is-readme-for-aos-next-exclamation-exclamation-exclamation-">:exclamation::exclamation::exclamation: This is README for aos@next :exclamation::exclamation::exclamation:</h2>
+<p>For last stable release (v2) go <a href="https://github.com/michalsnik/aos/tree/v2">here</a></p>
+<hr>
+<h3 id="-demo">🚀 <a href="http://michalsnik.github.io/aos/">Demo</a></h3>
+<h3 id="-codepen-examples">🌟 Codepen Examples</h3>
+<ul>
+<li><a href="http://codepen.io/michalsnik/pen/WxNdvq">Different built-in animations</a></li>
+<li><a href="http://codepen.io/michalsnik/pen/jrOYVO">With anchor setting in use</a></li>
+<li><a href="http://codepen.io/michalsnik/pen/EyxoNm">With anchor-placement and different easings</a></li>
+<li><a href="http://codepen.io/michalsnik/pen/WxvNvE">With simple custom animations</a></li>
+</ul>
+<p>👉 To get a better understanding how this actually works, I encourage you to check <a href="https://css-tricks.com/aos-css-driven-scroll-animation-library/">my post on CSS-tricks</a>.</p>
+<hr>
+<h2 id="-installation">⚙ Installation</h2>
+<h3 id="basic">Basic</h3>
+<p>Add styles in <code>&lt;head&gt;</code>:</p>
+<pre><code class="lang-html">  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/aos@next/dist/aos.css&quot; /&gt;
+</code></pre>
+<p>Add script right before closing <code>&lt;/body&gt;</code> tag, and initialize AOS:</p>
+<pre><code class="lang-html">  &lt;script src=&quot;https://unpkg.com/aos@next/dist/aos.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    AOS.init();
+  &lt;/script&gt;
+</code></pre>
+<h3 id="using-package-managers">Using package managers</h3>
+<p>Install <code>aos</code> package:</p>
+<ul>
+<li><code>yarn add aos@next</code></li>
+<li>or <code>npm install --save aos@next</code></li>
+</ul>
+<p>Import script, styles and initialize AOS:</p>
+<pre><code class="lang-js">import AOS from &#39;aos&#39;;
+import &#39;aos/dist/aos.css&#39;; // You can also use &lt;link&gt; for styles
+// ..
+AOS.init();
+</code></pre>
+<p>In order to make it work you&#39;ll have to make sure your build process has configured styles loader, and bundles it all correctly.
+If you&#39;re using <a href="https://parceljs.org/">Parcel</a> however, it will work out of the box as provided.</p>
+<hr>
+<h2 id="-how-to-use-it-">🤔 How to use it?</h2>
+<h3 id="1-initialize-aos-">1. Initialize AOS:</h3>
+<pre><code class="lang-js">AOS.init();
+
+// You can also pass an optional settings object
+// below listed default settings
+AOS.init({
+  // Global settings:
+  disable: false, // accepts following values: &#39;phone&#39;, &#39;tablet&#39;, &#39;mobile&#39;, boolean, expression or function
+  startEvent: &#39;DOMContentLoaded&#39;, // name of the event dispatched on the document, that AOS should initialize on
+  initClassName: &#39;aos-init&#39;, // class applied after initialization
+  animatedClassName: &#39;aos-animate&#39;, // class applied on animation
+  useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+  disableMutationObserver: false, // disables automatic mutations&#39; detections (advanced)
+  debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+  throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+
+  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+  offset: 120, // offset (in px) from the original trigger point
+  delay: 0, // values from 0 to 3000, with step 50ms
+  duration: 400, // values from 0 to 3000, with step 50ms
+  easing: &#39;ease&#39;, // default easing for AOS animations
+  once: false, // whether animation should happen only once - while scrolling down
+  mirror: false, // whether elements should animate out while scrolling past them
+  anchorPlacement: &#39;top-bottom&#39;, // defines which position of the element regarding to window should trigger the animation
+
+});
+</code></pre>
+<h3 id="2-set-animation-using-data-aos-attribute-">2. Set animation using <code>data-aos</code> attribute:</h3>
+<pre><code class="lang-html">  &lt;div data-aos=&quot;fade-in&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>And adjust behaviour by using <code>data-aos-*</code> attributes:</p>
+<pre><code class="lang-html">  &lt;div
+    data-aos=&quot;fade-up&quot;
+    data-aos-offset=&quot;200&quot;
+    data-aos-delay=&quot;50&quot;
+    data-aos-duration=&quot;1000&quot;
+    data-aos-easing=&quot;ease-in-out&quot;
+    data-aos-mirror=&quot;true&quot;
+    data-aos-once=&quot;false&quot;
+    data-aos-anchor-placement=&quot;top-center&quot;
+  &gt;
+  &lt;/div&gt;
+</code></pre>
+<p><a href="https://github.com/michalsnik/aos#animations">See full list of all animations, easings and anchor placements</a></p>
+<h4 id="anchor">Anchor</h4>
+<p>There is also a setting that can be used only on per-element basis:</p>
+<ul>
+<li><code>data-aos-anchor</code> - element whose offset will be used to trigger animation instead of an actual one.</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="lang-html">&lt;div data-aos=&quot;fade-up&quot; data-aos-anchor=&quot;.other-element&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>This way you can trigger animation on one element, while you scroll to another - useful in animating fixed elements.</p>
+<hr>
+<h2 id="api">API</h2>
+<p>AOS object is exposed as a global variable, for now there are three methods available:</p>
+<ul>
+<li><code>init</code> - initialize AOS</li>
+<li><code>refresh</code> - recalculate all offsets and positions of elements (called on window resize)</li>
+<li><code>refreshHard</code> - reinit array with AOS elements and trigger <code>refresh</code> (called on DOM changes that are related to <code>aos</code> elements)</li>
+</ul>
+<p>Example execution:</p>
+<pre><code class="lang-javascript">  AOS.refresh();
+</code></pre>
+<p>By default AOS is watching for DOM changes and if there are any new elements loaded asynchronously or when something is removed from DOM it calls <code>refreshHard</code> automatically. In browsers that don&#39;t support <code>MutationObserver</code> like IE you might need to call <code>AOS.refreshHard()</code> by yourself.</p>
+<p><code>refresh</code> method is called on window resize and so on, as it doesn&#39;t require to build new store with AOS elements and should be as light as possible.</p>
+<hr>
+<h2 id="js-events">JS Events</h2>
+<p>AOS dispatches two events on document: <code>aos:in</code> and <code>aos:out</code> whenever any element animates in or out, so that you can do extra stuff in JS:</p>
+<pre><code class="lang-js">document.addEventListener(&#39;aos:in&#39;, ({ detail }) =&gt; {
+  console.log(&#39;animated in&#39;, detail);
+});
+
+document.addEventListener(&#39;aos:out&#39;, ({ detail }) =&gt; {
+  console.log(&#39;animated out&#39;, detail);
+});
+</code></pre>
+<p>You can also tell AOS to trigger custom event on specific element, by setting <code>data-aos-id</code> attribute:</p>
+<pre><code class="lang-html">&lt;div data-aos=&quot;fade-in&quot; data-aos-id=&quot;super-duper&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>Then you&#39;ll be able to listen for two custom events then:</p>
+<ul>
+<li><code>aos:in:super-duper</code></li>
+<li><code>aos:out:super-duper</code></li>
+</ul>
+<hr>
+<h2 id="recipes-">Recipes:</h2>
+<h4 id="adding-custom-animations-">Adding custom animations:</h4>
+<p>Sometimes built-in animations are just not enough. Let&#39;s say you need one box to have different animation depending on resolution.
+Here&#39;s how you could do it:</p>
+<pre><code class="lang-css">[data-aos=&quot;new-animation&quot;] {
+  opacity: 0;
+  transition-property: transform, opacity;
+
+  &amp;.aos-animate {
+    opacity: 1;
+  }
+
+  @media screen and (min-width: 768px) {
+    transform: translateX(100px);
+
+    &amp;.aos-animate {
+      transform: translateX(0);
+    }
+  }
+}
+</code></pre>
+<p>Then use it in HTML:</p>
+<pre><code class="lang-html">&lt;div data-aos=&quot;new-animation&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>The element will only animate opacity on mobile devices, but from 768px width it&#39;ll also slide from right to left.</p>
+<h4 id="adding-custom-easing-">Adding custom easing:</h4>
+<p>Similar to animations you can add custom easings:</p>
+<pre><code class="lang-css">[data-aos] {
+  body[data-aos-easing=&quot;new-easing&quot;] &amp;,
+  &amp;[data-aos][data-aos-easing=&quot;new-easing&quot;] {
+    transition-timing-function: cubic-bezier(.250, .250, .750, .750);
+  }
+}
+</code></pre>
+<h4 id="customizing-default-animations-distance">Customizing default animations distance</h4>
+<p>Default distance for built-in animations is 100px. As long as you&#39;re using SCSS though, you can override it:</p>
+<pre><code class="lang-css">$aos-distance: 200px; // It has to be above import
+@import &#39;node_modules/aos/src/sass/aos.scss&#39;;
+</code></pre>
+<p>You have to however configure your build process to allow it to import styles from <code>node_modules</code> beforehand.</p>
+<h4 id="integrating-external-css-animation-library-e-g-animate-css-">Integrating external CSS animation library (e.g. Animate.css):</h4>
+<p>Use <code>animatedClassName</code> to change default behaviour of AOS, to apply class names placed inside <code>data-aos</code> on scroll.</p>
+<pre><code class="lang-html">&lt;div data-aos=&quot;fadeInUp&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="lang-js">AOS.init({
+  useClassNames: true,
+  initClassName: false,
+  animatedClassName: &#39;animated&#39;,
+});
+</code></pre>
+<p>The above element will get two classes: <code>animated</code> and <code>fadeInUp</code>. Using different combinations of the three above settings, you should be able to integrate any external CSS animation library.</p>
+<p>External libraries however don&#39;t care too much about animation state before the actual animation. So if you want those elements to be not visible before scrolling, you might need to add similar styles:</p>
+<pre><code class="lang-css">[data-aos] {
+  visibility: hidden;
+}
+[data-aos].animated {
+  visibility: visible;
+}
+</code></pre>
+<hr>
+<h2 id="caveats-">Caveats:</h2>
+<h4 id="setting-duration-delay">setting: <code>duration</code>, <code>delay</code></h4>
+<p>Duration and delay accept values from 50 to 3000, with step 50ms, it&#39;s because those are handled by css, and to not make css longer than it is already I implemented only a subset. I believe those should cover most cases.</p>
+<p>If not, you can write simple CSS that will add another duration, for example:</p>
+<pre><code class="lang-css">  body[data-aos-duration=&#39;4000&#39;] [data-aos],
+  [data-aos][data-aos][data-aos-duration=&#39;4000&#39;] {
+    transition-duration: 4000ms;
+  }
+</code></pre>
+<p>This code will add 4000ms duration available for you to set on AOS elements, or to set as global duration while initializing AOS script.
+Notice that double <code>[data-aos][data-aos]</code> - it&#39;s not a mistake, it is a trick, to make individual settings more important than global, without need to write ugly &quot;!important&quot; there :)</p>
+<p>Example usage:</p>
+<pre><code class="lang-html">  &lt;div data-aos=&quot;fade-in&quot; data-aos-duration=&quot;4000&quot;&gt;&lt;/div&gt;
+</code></pre>
+<hr>
+<h2 id="predefined-options">Predefined options</h2>
+<h3 id="animations">Animations</h3>
+<ul>
+<li><p>Fade animations:</p>
+<ul>
+<li>fade</li>
+<li>fade-up</li>
+<li>fade-down</li>
+<li>fade-left</li>
+<li>fade-right</li>
+<li>fade-up-right</li>
+<li>fade-up-left</li>
+<li>fade-down-right</li>
+<li>fade-down-left</li>
+</ul>
+</li>
+<li><p>Flip animations:</p>
+<ul>
+<li>flip-up</li>
+<li>flip-down</li>
+<li>flip-left</li>
+<li>flip-right</li>
+</ul>
+</li>
+<li><p>Slide animations:</p>
+<ul>
+<li>slide-up</li>
+<li>slide-down</li>
+<li>slide-left</li>
+<li>slide-right</li>
+</ul>
+</li>
+<li><p>Zoom animations:</p>
+<ul>
+<li>zoom-in</li>
+<li>zoom-in-up</li>
+<li>zoom-in-down</li>
+<li>zoom-in-left</li>
+<li>zoom-in-right</li>
+<li>zoom-out</li>
+<li>zoom-out-up</li>
+<li>zoom-out-down</li>
+<li>zoom-out-left</li>
+<li>zoom-out-right</li>
+</ul>
+</li>
+</ul>
+<h3 id="anchor-placements-">Anchor placements:</h3>
+<ul>
+<li>top-bottom</li>
+<li>top-center</li>
+<li>top-top</li>
+<li>center-bottom</li>
+<li>center-center</li>
+<li>center-top</li>
+<li>bottom-bottom</li>
+<li>bottom-center</li>
+<li>bottom-top</li>
+</ul>
+<h3 id="easing-functions-">Easing functions:</h3>
+<ul>
+<li>linear</li>
+<li>ease</li>
+<li>ease-in</li>
+<li>ease-out</li>
+<li>ease-in-out</li>
+<li>ease-in-back</li>
+<li>ease-out-back</li>
+<li>ease-in-out-back</li>
+<li>ease-in-sine</li>
+<li>ease-out-sine</li>
+<li>ease-in-out-sine</li>
+<li>ease-in-quad</li>
+<li>ease-out-quad</li>
+<li>ease-in-out-quad</li>
+<li>ease-in-cubic</li>
+<li>ease-out-cubic</li>
+<li>ease-in-out-cubic</li>
+<li>ease-in-quart</li>
+<li>ease-out-quart</li>
+<li>ease-in-out-quart</li>
+</ul>
+<hr>
+<h2 id="-questions">❔Questions</h2>
+<p>If you found a bug, have a question or an idea, please check <a href="CONTRIBUTING.md">AOS contribution guide</a> and don&#39;t hesitate to create new issues.</p>
 
       </body>
     </html>
